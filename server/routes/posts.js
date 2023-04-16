@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+const isTokenValid = require("../middleware/isTokenValid");
+const mongoose = require("mongoose");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -22,6 +24,33 @@ router.get("/", async (req, res, next) => {
     return res.json({
       success: false,
       message: "Failed to retrieve posts",
+    });
+  }
+});
+
+router.post("/", isTokenValid, async (req, res, next) => {
+  try {
+    const author = new mongoose.Types.ObjectId(req.payload.sub);
+    const { title, body, isPublished } = req.body;
+
+    const post = new Post({
+      title,
+      body,
+      author,
+      isPublished,
+    });
+
+    await post.save();
+    return res.json({
+      success: true,
+      message: "Post uploaded to database",
+      post,
+    });
+  } catch (err) {
+    return res.json({
+      success: false,
+      message: "Failed to upload post",
+      error: err,
     });
   }
 });
