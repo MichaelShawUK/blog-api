@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
-const user = require("./user");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+
+const isTokenValid = require("../middleware/isTokenValid");
 
 router.post("/register", async (req, res, next) => {
   try {
@@ -89,32 +90,6 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-const isTokenValid = (req, res, next) => {
-  const { PUBLIC_KEY } = process.env;
-  const authHeader = req.get("Authorization");
-
-  if (!authHeader) {
-    return res.json({
-      success: false,
-      message: "Token not supplied",
-    });
-  }
-
-  const token = authHeader.slice(7);
-
-  jwt.verify(token, PUBLIC_KEY, { algorithm: "RS256" }, (err, decoded) => {
-    if (err) {
-      return res.json({
-        success: false,
-        message: "Could not verify token",
-        error: err,
-      });
-    }
-    req.payload = decoded;
-    next();
-  });
-};
-
 router.get("/protected", isTokenValid, (req, res, next) => {
   res.json({
     success: true,
@@ -124,6 +99,4 @@ router.get("/protected", isTokenValid, (req, res, next) => {
   });
 });
 
-const index = router;
-
-module.exports = { index, user };
+module.exports = router;
