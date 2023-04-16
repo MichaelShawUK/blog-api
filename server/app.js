@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
+const postsRouter = require("./routes/posts");
 
 async function connectDb() {
   await mongoose.connect(process.env.MONGODB_LOCAL);
@@ -22,5 +23,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", userRouter);
+app.use("/posts", postsRouter);
 
 module.exports = app;
