@@ -80,6 +80,37 @@ router.get("/:postId", async (req, res, next) => {
   }
 });
 
+router.post("/:postId", isTokenValid, async (req, res, next) => {
+  try {
+    const author = new mongoose.Types.ObjectId(req.body.authorId);
+
+    // Post update form input names - body, title, authorId, isPublished
+    const post = await Post.findById(req.params.postId);
+    post.title = req.body.title;
+    post.body = req.body.body;
+    post.author = author;
+    post.isPublished = req.body.isPublished;
+
+    await post.save();
+    const updatedPost = await Post.findById(req.params.postId).populate(
+      "author",
+      "name"
+    );
+
+    res.json({
+      success: true,
+      message: "Successfully updated post",
+      post: updatedPost,
+    });
+  } catch (err) {
+    return res.json({
+      success: false,
+      message: "Failed to update post",
+      error: err,
+    });
+  }
+});
+
 router.get("/:postId/comments", async (req, res, next) => {
   try {
     const comments = await Comment.find({ post: req.params.postId }).sort({
