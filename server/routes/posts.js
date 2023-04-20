@@ -138,4 +138,28 @@ router.get("/:postId/comments", async (req, res, next) => {
   }
 });
 
+router.post("/:postId/comments", async (req, res, next) => {
+  try {
+    const { body, author } = req.body;
+    const comment = new Comment({
+      body,
+      author,
+      post: req.params.postId,
+    });
+
+    await comment.save();
+
+    return res.json({
+      success: true,
+      message: "Comment added",
+    });
+  } catch (err) {
+    return res.json({
+      success: false,
+      message: "Failed to upload comment",
+      error: err,
+    });
+  }
+});
+
 module.exports = router;
