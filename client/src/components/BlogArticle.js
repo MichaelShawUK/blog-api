@@ -5,6 +5,7 @@ import axios from "axios";
 const BlogArticle = () => {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
+  const [date, setDate] = useState(null);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/posts/${postId}`).then((res) => {
@@ -12,68 +13,99 @@ const BlogArticle = () => {
     });
   }, [postId]);
 
+  useEffect(() => {
+    if (post) {
+      const timestamp = new Date(post.updatedAt);
+
+      const dateFormatted = timestamp.toLocaleDateString("en-gb", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+
+      setDate(dateFormatted);
+    }
+  }, [post]);
+
   return (
     <>
       {post && (
         <div className="blog-article">
           <img src={post.imageUrl} alt="" className="article-img"></img>
-          <h1>{post.title}</h1>
-          <div>{post.body}</div>
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec
-            purus vestibulum, rhoncus sapien quis, auctor dui. Aenean tincidunt
-            mauris in velit lobortis, eget lacinia purus finibus. Praesent at
-            ullamcorper libero, et malesuada massa. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Vivamus eget ultricies tellus.
-            Suspendisse ac nibh aliquet, sodales lorem vitae, sagittis justo.
-            Duis auctor venenatis enim ac gravida. Nulla non urna eget purus
-            varius rutrum quis sed augue. Duis pellentesque congue leo, ut
-            efficitur eros volutpat eu. Cras justo lorem, malesuada vehicula
-            feugiat a, tincidunt in dui. Etiam placerat ex eros, ac pulvinar
-            massa cursus at. Quisque in risus commodo, pulvinar elit et,
-            suscipit turpis. Nunc nisl nibh, accumsan sed sem in, porta euismod
-            arcu. Proin dictum semper dolor vitae molestie. Curabitur efficitur
-            congue nunc quis scelerisque. Etiam dignissim lacinia felis
-            elementum fringilla. Nunc eu est blandit, accumsan odio sit amet,
-            hendrerit leo. Vivamus dolor mi, suscipit ac mollis vulputate,
-            congue eu leo. Nullam iaculis pellentesque massa nec rhoncus. Duis a
-            elementum sem. Maecenas a mollis lorem. Sed tincidunt mi sit amet
-            libero volutpat, eget suscipit enim malesuada. Ut lobortis lacus nec
-            velit consequat convallis. Quisque eleifend, magna vel condimentum
-            malesuada, ipsum eros consectetur ligula, at pellentesque nibh metus
-            vel ipsum. Nulla fermentum vel diam sit amet consequat. Donec
-            maximus mattis lacus, eget convallis nibh fermentum a. Duis vehicula
-            enim eget tincidunt scelerisque. Quisque ornare commodo mauris et
-            gravida. Vestibulum malesuada, eros sit amet pretium scelerisque, ex
-            erat facilisis lectus, eu imperdiet tellus massa eget lacus. Nunc
-            volutpat, dui a ultricies pretium, nibh diam laoreet erat, eget
-            volutpat lacus augue ut nisi. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. Nulla pharetra
-            suscipit ullamcorper. Fusce porttitor augue leo, eget ullamcorper
-            purus egestas id. Vivamus at felis sed mi efficitur volutpat. Fusce
-            iaculis bibendum hendrerit. Donec varius nunc ultricies tellus
-            efficitur pellentesque. Nulla nulla lectus, scelerisque sit amet
-            tortor sit amet, varius lacinia lectus. Phasellus imperdiet urna
-            eget lacinia posuere. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia curae; Aliquam ac dignissim
-            purus. Quisque nibh diam, congue nec tristique in, efficitur sed
-            magna. Quisque a risus et sapien dignissim hendrerit. Sed ante
-            libero, suscipit ut turpis ut, ultricies lacinia augue. Proin magna
-            tortor, vehicula id molestie et, ornare at eros. Aenean ut felis nec
-            magna placerat bibendum at et tortor. Curabitur a ligula sodales,
-            eleifend quam et, pulvinar lacus. Integer sodales, odio non
-            scelerisque cursus, risus orci finibus diam, eget ultricies massa
-            velit quis leo. In bibendum tortor quis ultrices lobortis. Nunc
-            rhoncus enim felis, et tincidunt leo lacinia sit amet. Vivamus
-            eleifend nec orci nec placerat. Nunc est purus, volutpat eget
-            efficitur et, maximus eget orci. Duis venenatis felis quis nulla
-            aliquam euismod. Fusce nec commodo nisl. Sed ac urna sit amet magna
-            dapibus sagittis sit amet nec risus. Donec non augue sit amet quam
-            elementum fermentum. Duis id tincidunt sapien, ut facilisis tellus.
-            Quisque accumsan libero ac leo mollis tincidunt. Ut non ipsum
-            ultricies, auctor risus id, eleifend dolor. Suspendisse massa velit,
-            placerat eu lorem hendrerit, molestie ultricies erat. Sed efficitur
-            pretium felis sed porta.
+          <h1 className="blog-title blog-text">{post.title}</h1>
+          <div className="blog-text">
+            by <strong>{post.author.name}</strong> last edited {date}
+          </div>
+          <p className="blog-text">
+            <i>{post.body}</i>
+          </p>
+          <div className="blog-text">
+            Etiam semper leo a auctor blandit. Nullam neque nunc, tempor mattis
+            quam et, suscipit varius enim. Aliquam venenatis diam eget diam
+            euismod pulvinar. Vivamus non metus eu arcu tristique consequat a ut
+            diam. Praesent tempor posuere augue, ac tincidunt neque pulvinar a.
+            Duis auctor arcu eu metus lobortis, sit amet ultricies felis
+            tristique. Nam semper est quis dictum sagittis. Fusce ac quam
+            libero. Nunc imperdiet non lacus sed interdum. Mauris sit amet justo
+            ac leo volutpat luctus. Interdum et malesuada fames ac ante ipsum
+            primis in faucibus. Mauris tempor nunc luctus est efficitur, eu
+            vehicula massa elementum.
+            <br></br>
+            <br></br>
+            Mauris dictum accumsan augue, sed mattis ipsum vulputate in. Proin
+            tincidunt enim ut risus fringilla mattis. Suspendisse in
+            sollicitudin nibh, nec dignissim ante. Quisque pellentesque
+            hendrerit mattis. Ut quis nisi imperdiet, maximus nisi vel,
+            hendrerit sem. Duis sed nulla sodales odio eleifend rhoncus. Sed
+            ultricies hendrerit felis, in sodales lacus elementum eu. In
+            vulputate eget diam sit amet tristique. Aliquam metus felis,
+            consequat id erat non, luctus gravida metus. Ut ultricies ut velit
+            nec gravida. Nam dictum eros eu dolor vehicula ultricies. Vestibulum
+            gravida maximus diam a ullamcorper. Quisque mi quam, tincidunt sed
+            feugiat non, placerat id magna. Nam et libero ut arcu suscipit
+            bibendum. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. Duis eleifend urna nisi, id
+            sodales diam egestas a.
+            <br></br>
+            <br></br>
+            Curabitur dictum urna ac venenatis consequat. In hac habitasse
+            platea dictumst. Sed venenatis sapien ultrices tellus fringilla, id
+            aliquet libero pulvinar. Vestibulum ligula neque, porta et enim ac,
+            tincidunt finibus nisi. Nunc eu vulputate ex, tempor consectetur
+            ipsum. Praesent nisl velit, posuere ac est quis, finibus viverra
+            massa. Nullam et gravida ante, et facilisis massa.
+            <br></br>
+            <br></br>
+            Mauris eu posuere lorem. Proin tincidunt nunc nisl, a venenatis mi
+            pharetra vitae. Mauris malesuada dui et facilisis mollis. Fusce sed
+            suscipit massa, vel lobortis ligula. Etiam eu erat in metus volutpat
+            semper. Interdum et malesuada fames ac ante ipsum primis in
+            faucibus. Phasellus nec turpis vel ex elementum viverra. Proin a
+            sagittis mauris. Vivamus aliquet sem vel leo blandit, a commodo ante
+            ornare.
+            <br></br>
+            <br></br>
+            Pellentesque in mollis risus. Ut faucibus odio eu metus vulputate
+            rhoncus eget et tellus. Pellentesque vel mi a risus pharetra
+            porttitor sit amet at lorem. Aliquam quam libero, tincidunt a dolor
+            ut, porttitor iaculis tortor. Aenean suscipit, velit ac vehicula
+            rutrum, velit ipsum gravida nibh, nec facilisis tellus nibh at
+            ligula. Mauris quis maximus nibh, vitae auctor orci. Donec congue
+            placerat nisi sed luctus.
+            <br></br>
+            <br></br>
+            In sagittis sollicitudin erat vel vestibulum. Donec semper magna vel
+            turpis imperdiet, ac feugiat leo convallis. Curabitur lectus libero,
+            suscipit vel quam porttitor, tempor vehicula elit. Duis tincidunt
+            convallis leo. Vestibulum quis odio justo. Aliquam molestie urna
+            arcu, non vulputate nisi commodo eu. Aliquam lacinia velit tempus,
+            posuere dolor ut, cursus quam. In in massa massa. Integer tempor est
+            at mi varius, sed iaculis quam gravida. Nullam posuere vulputate
+            elit, sed pretium mi vehicula sit amet. Orci varius natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Pellentesque ut tempor arcu. Cras nec tortor condimentum, commodo
+            quam at, tincidunt magna. Donec a turpis et leo cursus auctor. Nunc
+            sit amet diam quis odio facilisis tristique.
           </div>
         </div>
       )}
