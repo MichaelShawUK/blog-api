@@ -6,6 +6,8 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+/* BLOG PREVIEW */
+
 .blog-preview {
   margin: 10px;
 }
@@ -35,4 +37,12 @@ body {
 .blog-title {
   font-weight: bold;
   font-size: 18px;
+}
+
+/* ERROR PAGE */
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
