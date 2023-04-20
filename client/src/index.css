@@ -5,3 +5,25 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.blog-preview {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.blog-img {
+  width: 300px;
+  border-radius: 5px;
+}
+
+.date-posted {
+  color: #444;
+  font-size: 14px;
+}
+
+.blog-title {
+  font-weight: bold;
+  font-size: 18px;
+}
