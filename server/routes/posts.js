@@ -31,13 +31,14 @@ router.get("/", async (req, res, next) => {
 router.post("/", isTokenValid, async (req, res, next) => {
   try {
     const author = new mongoose.Types.ObjectId(req.payload.sub);
-    const { title, body, isPublished } = req.body;
+    const { title, body, isPublished, imageUrl } = req.body;
 
     const post = new Post({
       title,
       body,
       author,
       isPublished,
+      imageUrl,
     });
 
     await post.save();
@@ -84,12 +85,13 @@ router.post("/:postId", isTokenValid, async (req, res, next) => {
   try {
     const author = new mongoose.Types.ObjectId(req.body.authorId);
 
-    // Post update form input names - body, title, authorId, isPublished
+    // Post update form input names - body, title, authorId, isPublished, iamgeUrl
     const post = await Post.findById(req.params.postId);
     post.title = req.body.title;
     post.body = req.body.body;
     post.author = author;
     post.isPublished = req.body.isPublished;
+    post.imageUrl = req.body.imageUrl;
 
     await post.save();
     const updatedPost = await Post.findById(req.params.postId).populate(
