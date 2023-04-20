@@ -13,7 +13,7 @@ const BlogPreview = (post) => {
 
   return (
     <div className="blog-preview">
-      <a href={`/${post.post._id}`}>
+      <a href={`/posts/${post.post._id}`}>
         <img src={imageUrl} alt="" className="blog-img" />
         <div className="date-posted">{dateFormatted}</div>
         <div className="blog-title">{title}</div>
