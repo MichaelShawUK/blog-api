@@ -80,6 +80,7 @@ router.post("/login", async (req, res, next) => {
         success: true,
         message: "Successful login,",
         token,
+        username: user.username,
       });
     });
   } catch (err) {

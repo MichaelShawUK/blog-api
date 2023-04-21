@@ -9,6 +9,11 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Root from "./components/Root";
 
+import Protected from "./components/Protected";
+import protectedLoader from "./loaders/protected";
+
+import loginAction from "./action/login";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,37 +24,26 @@ const router = createBrowserRouter([
         path: "/posts",
         element: <Posts />,
       },
-      // {
-      //   path: "/login",
-      //   element: <Login />,
-      // },
-      // {
-      //   path: "/register",
-      //   element: <Register />,
-      // },
       {
         path: "/posts/:postId",
         element: <BlogArticle />,
       },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <Posts />,
-  //   errorElement: <ErrorPage />,
-  // },
   {
     path: "/login",
     element: <Login />,
+    action: loginAction,
   },
   {
     path: "/register",
     element: <Register />,
   },
-  // {
-  //   path: "/posts/:postId",
-  //   element: <BlogArticle />,
-  // },
+  {
+    path: "/protected",
+    element: <Protected />,
+    loader: protectedLoader,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
