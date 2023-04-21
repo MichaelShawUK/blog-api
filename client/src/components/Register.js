@@ -30,7 +30,7 @@ const Register = () => {
           Already have an account? <a href="/login">Log In</a>
         </p>
       </div>
-      <div class="login-img"></div>
+      <div className="login-img"></div>
     </div>
   );
 };

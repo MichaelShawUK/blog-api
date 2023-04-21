@@ -2,7 +2,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-form">
-        <form action="/login" method="post">
+        <form action="http://localhost:3000/login" method="post">
           <p className="form-header">Welcome Back</p>
           <input
             id="username"
@@ -23,7 +23,7 @@ const Login = () => {
           Don't have an account? <a href="/register">Register</a>
         </p>
       </div>
-      <div class="login-img"></div>
+      <div className="login-img"></div>
     </div>
   );
 };

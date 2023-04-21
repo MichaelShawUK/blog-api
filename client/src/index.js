@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import Posts from "./Posts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./errorPage";
 import BlogArticle from "./components/BlogArticle";
@@ -11,7 +11,7 @@ import Register from "./components/Register";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Posts />,
     errorElement: <ErrorPage />,
   },
   {

@@ -1,9 +1,9 @@
-import "./App.css";
+import "./Posts.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import BlogPreview from "./components/BlogPreview";
 
-function App() {
+function Posts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="Posts">
       {posts.map((post) => (
         <BlogPreview key={post._id} post={post} />
       ))}
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default Posts;
