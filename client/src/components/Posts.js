@@ -1,7 +1,6 @@
-import "./Posts.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import BlogPreview from "./components/BlogPreview";
+import BlogPreview from "./BlogPreview";
 
 function Posts() {
   const [posts, setPosts] = useState([]);

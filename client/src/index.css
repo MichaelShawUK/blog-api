@@ -154,3 +154,21 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header a {
+  text-decoration: none;
+  color: initial;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

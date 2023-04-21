@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Register = () => {
   return (
     <div className="login">
@@ -27,7 +29,10 @@ const Register = () => {
           <button type="submit">Register</button>
         </form>
         <p>
-          Already have an account? <a href="/login">Log In</a>
+          Already have an account? <Link to="/login">Log In</Link>
+        </p>
+        <p>
+          Go to <Link to="/posts">Blog Posts</Link>
         </p>
       </div>
       <div className="login-img"></div>
