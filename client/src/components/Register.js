@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, Form, useActionData } from "react-router-dom";
 
 const Register = () => {
+  const errors = useActionData();
+
   return (
     <div className="login">
       <div className="login-form">
-        <form action="/register" method="post">
+        <Form action="/register" method="post">
           <p className="form-header">Get Started</p>
           <input
             id="username"
@@ -27,7 +29,8 @@ const Register = () => {
             placeholder="Confirm Password"
           ></input>
           <button type="submit">Register</button>
-        </form>
+        </Form>
+        {errors && <span className="error">{errors}</span>}
         <p>
           Already have an account? <Link to="/login">Log In</Link>
         </p>

@@ -13,6 +13,7 @@ import Protected from "./components/Protected";
 import protectedLoader from "./loaders/protected";
 
 import loginAction from "./action/login";
+import registerAction from "./action/register";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+    action: registerAction,
   },
   {
     path: "/protected",
