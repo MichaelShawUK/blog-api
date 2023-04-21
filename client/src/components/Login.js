@@ -1,12 +1,9 @@
-import loginImg from "../assets/images/login.jpg";
-
 const Login = () => {
   return (
     <div className="login">
       <div className="login-form">
         <form action="/login" method="post">
           <p className="form-header">Welcome Back</p>
-          {/* <label for="username">Username</label> */}
           <input
             id="username"
             name="username"
@@ -14,7 +11,6 @@ const Login = () => {
             placeholder="Username"
             autoFocus
           ></input>
-          {/* <label for="password">Password</label> */}
           <input
             id="password"
             name="password"
