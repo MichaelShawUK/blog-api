@@ -5,12 +5,17 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./errorPage";
 import BlogArticle from "./components/BlogArticle";
+import Login from "./components/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
   {
     path: "/posts/:postId",
