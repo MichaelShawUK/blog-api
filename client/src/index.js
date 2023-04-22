@@ -11,9 +11,11 @@ import Root from "./components/Root";
 
 import Protected from "./components/Protected";
 import protectedLoader from "./loaders/protected";
+import commentsLoader from "./loaders/comments";
 
 import loginAction from "./action/login";
 import registerAction from "./action/register";
+import commentAction from "./action/comment";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/posts/:postId",
         element: <BlogArticle />,
+        loader: commentsLoader,
+      },
+      {
+        path: "/posts/:postId/comments",
+        action: commentAction,
       },
     ],
   },

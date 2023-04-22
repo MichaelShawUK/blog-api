@@ -223,8 +223,8 @@ button:hover {
 /* COMMENT */
 
 .comments {
-  min-width: 300px;
-  max-width: 600px;
+  /* min-width: 300px;
+  max-width: 600px; */
 }
 
 .comment {
@@ -245,6 +245,8 @@ button:hover {
 
 .comment-section {
   margin: 40px 5px;
+  min-width: 300px;
+  max-width: 600px;
 }
 
 .displayNone {

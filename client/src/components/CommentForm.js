@@ -6,6 +6,11 @@ const showForm = (e) => {
   e.target.style = "display: none";
 };
 
+const hideForm = (e) => {
+  const commentForm = document.getElementById("comment-form-container");
+  commentForm.classList.add("displayNone");
+};
+
 const CommentForm = () => {
   const { postId } = useParams();
   return (
@@ -14,13 +19,19 @@ const CommentForm = () => {
         Add Comment
       </button>
       <div id="comment-form-container" className="displayNone">
-        <Form action={`/posts/${postId}/comments`} id="comment-form">
+        <Form
+          action={`/posts/${postId}/comments`}
+          method="post"
+          id="comment-form"
+        >
           <input name="post" type="text" value={postId} hidden readOnly></input>
           <label htmlFor="author">Name</label>
           <input id="author" name="author" type="text"></input>
           <label htmlFor="body">Comment</label>
           <textarea id="body" name="body" rows={10}></textarea>
-          <button type="submit">Submit Comment</button>
+          <button type="submit" onClick={hideForm}>
+            Submit Comment
+          </button>
         </Form>
       </div>
     </>
