@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import Comments from "./Comments.js";
+
 const BlogArticle = () => {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
@@ -107,6 +109,16 @@ const BlogArticle = () => {
             quam at, tincidunt magna. Donec a turpis et leo cursus auctor. Nunc
             sit amet diam quis odio facilisis tristique.
           </div>
+          <Comments
+            comments={[
+              {
+                author: "Andy",
+                body: "Apple sdfsdfdsfsdfdsfdsfzc zsc dads  asds ad asd asd asda sde ea asd adas dawe qawd as czczcasdf awafsdfsdf dsf sd fsdf sdf sdf sdf sdf",
+                createdAt: "today",
+              },
+              { author: "Bob", body: "Banana", createdAt: "tomorrow" },
+            ]}
+          />
         </div>
       )}
     </>
