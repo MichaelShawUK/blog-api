@@ -6,6 +6,21 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+button {
+  padding: 10px;
+  background-color: #213f5b;
+  color: #f0b73c;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 0 0 2px #f0b73c;
+}
+
 /* BLOG PREVIEW */
 
 .blog-preview {
@@ -107,7 +122,7 @@ body {
   margin-bottom: 20px;
 }
 
-.login-form form button {
+/* .login-form form button {
   padding: 10px;
   background-color: #213f5b;
   color: #f0b73c;
@@ -120,7 +135,7 @@ body {
 
 .login-form form button:hover {
   box-shadow: 0 0 0 2px #f0b73c;
-}
+} */
 
 .login-form form input:focus,
 .login-form form input:active {
@@ -158,6 +173,16 @@ body {
   .login {
     grid-template-columns: 1fr;
   }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
 }
 
 /* HEADER */
@@ -169,7 +194,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: initial;
+  /* color: initial; */
 }
 
 .header nav {
@@ -185,7 +210,7 @@ body {
   gap: 10px;
 }
 
-.login-info button {
+/* .login-info button {
   border: none;
   padding: 5px;
   font-weight: bold;
@@ -193,14 +218,13 @@ body {
   background-color: #f0b73c;
   border-radius: 3px;
   cursor: pointer;
-}
+} */
 
 /* COMMENT */
 
 .comments {
   min-width: 300px;
   max-width: 600px;
-  margin: 0 5px;
 }
 
 .comment {
@@ -212,4 +236,70 @@ body {
 .comment-header {
   display: flex;
   justify-content: space-between;
+}
+
+.add-comment-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.comment-section {
+  margin: 40px 5px;
+}
+
+.displayNone {
+  display: none;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-section input,
+.comment-section textarea {
+  margin-bottom: 20px;
+}
+
+.comment-section textarea {
+  resize: none;
+}
+
+.comment-section button {
+  width: max-content;
+  display: block;
+  margin: 0 auto;
+}
+
+/* LOGO */
+
+#logo {
+  color: #213f5b;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline::after {
+  content: "";
+  width: 20px;
+  height: 5px;
+  background-color: #f0b73c;
+  position: absolute;
+  bottom: 0px;
+}
+
+/* NAVBAR */
+
+.navbar {
+  font-weight: bold;
+}
+
+.navbar a {
+  color: #213f5b;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid #f0b73c;
 }

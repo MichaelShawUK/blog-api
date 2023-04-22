@@ -9,7 +9,9 @@ const Root = () => {
     <>
       <header className="header">
         <Link to="/posts">
-          <h1>BLOG SPACE</h1>
+          <h1 id="logo">
+            BLOG <span className="underline">SPACE</span>
+          </h1>
         </Link>
         {!username && <Nav />}
         {username && (
