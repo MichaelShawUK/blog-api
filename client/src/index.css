@@ -21,6 +21,11 @@ button:hover {
   box-shadow: 0 0 0 2px #f0b73c;
 }
 
+textarea {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 /* BLOG PREVIEW */
 
 .blog-preview {
