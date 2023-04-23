@@ -12,6 +12,7 @@ import Root from "./components/Root";
 import Protected from "./components/Protected";
 import protectedLoader from "./loaders/protected";
 import commentsLoader from "./loaders/comments";
+import postsLoader from "./loaders/posts";
 
 import loginAction from "./action/login";
 import registerAction from "./action/register";
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/posts",
         element: <Posts />,
+        loader: postsLoader,
       },
       {
         path: "/posts/:postId",
