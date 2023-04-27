@@ -18,6 +18,7 @@ import postsLoader from "./loaders/posts";
 import loginAction from "./action/login";
 import registerAction from "./action/register";
 import commentAction from "./action/comment";
+import newBlogAction from "./action/newBlog";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/posts/new",
         element: <NewBlog />,
+        action: newBlogAction,
       },
       {
         path: "/posts/:postId",
