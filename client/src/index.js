@@ -8,6 +8,7 @@ import BlogArticle from "./components/BlogArticle";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Root from "./components/Root";
+import NewBlog from "./components/NewBlog";
 
 import Protected from "./components/Protected";
 import protectedLoader from "./loaders/protected";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         path: "/posts",
         element: <Posts />,
         loader: postsLoader,
+      },
+      {
+        path: "/posts/new",
+        element: <NewBlog />,
       },
       {
         path: "/posts/:postId",

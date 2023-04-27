@@ -19,7 +19,11 @@ function Posts() {
 
   return (
     <div className="Posts">
-      {username && <button>New Blog</button>}
+      {username && (
+        <a href="/posts/new">
+          <button>New Blog</button>
+        </a>
+      )}
       {loaderError && <p>{loaderError.message}</p>}
       {posts.map((post) => (
         <BlogPreview key={post._id} post={post} />
