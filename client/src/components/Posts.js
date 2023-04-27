@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import BlogPreview from "./BlogPreview";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
   const [loaderError, setLoaderError] = useState(null);
   const [error, res] = useLoaderData();
+
+  const username = useOutletContext();
 
   useEffect(() => {
     if (error) {
@@ -17,6 +19,7 @@ function Posts() {
 
   return (
     <div className="Posts">
+      {username && <button>New Blog</button>}
       {loaderError && <p>{loaderError.message}</p>}
       {posts.map((post) => (
         <BlogPreview key={post._id} post={post} />
