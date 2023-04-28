@@ -28,7 +28,7 @@ const Login = () => {
           Don't have an account? <Link to="/register">Register</Link>
         </p>
         <p>
-          Go to <Link to="/posts">Blog Posts</Link>
+          Go to <Link to="/">Blog Posts</Link>
         </p>
       </div>
       <div className="login-img"></div>

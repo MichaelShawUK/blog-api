@@ -22,12 +22,12 @@ import newBlogAction from "./action/newBlog";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    // path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/posts",
+        path: "/",
         element: <Posts />,
         loader: postsLoader,
       },

@@ -36,7 +36,7 @@ const action = async ({ request }) => {
     if (loginResponse.data.success) {
       localStorage.setItem("token", loginResponse.data.token);
       localStorage.setItem("username", loginResponse.data.username);
-      return redirect("/posts");
+      return redirect("/");
     }
   }
   return registerResponse.data.message;

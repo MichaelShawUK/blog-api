@@ -25,7 +25,7 @@ const action = async ({ request }) => {
     }
     const res = await axios.post("http://localhost:3000/posts", data);
     if (res.data.success) {
-      return redirect("/posts");
+      return redirect("/");
     }
     return res;
   } catch (err) {

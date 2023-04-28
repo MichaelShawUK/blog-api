@@ -8,7 +8,7 @@ const Root = () => {
   return (
     <>
       <header className="header">
-        <Link to="/posts">
+        <Link to="/">
           <h1 id="logo">
             BLOG <span className="underline">SPACE</span>
           </h1>

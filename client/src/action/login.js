@@ -7,7 +7,7 @@ const action = async ({ request }) => {
   if (res.data.success) {
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("username", res.data.username);
-    return redirect("/posts");
+    return redirect("/");
   }
   return res.data.message;
 };
