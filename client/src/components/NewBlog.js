@@ -2,9 +2,6 @@ import { Form, useActionData } from "react-router-dom";
 
 const NewBlog = () => {
   const error = useActionData();
-  if (error) {
-    return <div>{error?.data?.message}</div>;
-  }
 
   return (
     <Form action="/posts/new" method="post" id="new-blog-form">
@@ -23,6 +20,7 @@ const NewBlog = () => {
       {/* <label htmlFor="isPublished">Publish Article</label>
       <input id="isPublished" name="isPublished" type="checkbox"></input> */}
       <button type="submit">Add Blog</button>
+      {error && <p className="error">{error}</p>}
     </Form>
   );
 };

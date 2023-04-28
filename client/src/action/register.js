@@ -22,6 +22,10 @@ const action = async ({ request }) => {
     return "Password is required";
   }
 
+  if (password.length < 8) {
+    return "Password must be minimum 8 characters";
+  }
+
   const registerResponse = await axios.post(
     "http://localhost:3000/register",
     data
