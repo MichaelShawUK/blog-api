@@ -24,7 +24,7 @@ const action = async ({ request }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     const res = await axios.post(
-      "http://blog-api-backend-production.up.railway.app/posts",
+      "https://blog-api-backend-production.up.railway.app/posts",
       data
     );
     if (res.data.success) {

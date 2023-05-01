@@ -3,7 +3,7 @@ import axios from "axios";
 const loader = async () => {
   try {
     const res = await axios.get(
-      "http://blog-api-backend-production.up.railway.app/posts"
+      "https://blog-api-backend-production.up.railway.app/posts"
     );
     return [null, res];
   } catch (err) {

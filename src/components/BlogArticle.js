@@ -12,7 +12,7 @@ const BlogArticle = () => {
 
   useEffect(() => {
     axios
-      .get(`http://blog-api-backend-production.up.railway.app/posts/${postId}`)
+      .get(`https://blog-api-backend-production.up.railway.app/posts/${postId}`)
       .then((res) => {
         setPost(res.data.post);
       });
