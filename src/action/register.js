@@ -27,12 +27,15 @@ const action = async ({ request }) => {
   }
 
   const registerResponse = await axios.post(
-    "http://localhost:3000/register",
+    "http://blog-api-backend-production.up.railway.app/register",
     data
   );
 
   if (registerResponse.data.success) {
-    const loginResponse = await axios.post("http://localhost:3000/login", data);
+    const loginResponse = await axios.post(
+      "http://blog-api-backend-production.up.railway.app/login",
+      data
+    );
     if (loginResponse.data.success) {
       localStorage.setItem("token", loginResponse.data.token);
       localStorage.setItem("username", loginResponse.data.username);

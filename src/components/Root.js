@@ -31,7 +31,6 @@ const Root = () => {
         )}
       </header>
       <Outlet context={username} />
-      <Link to="/protected">Protected Route</Link>
     </>
   );
 };

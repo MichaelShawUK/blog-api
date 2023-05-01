@@ -23,7 +23,10 @@ const action = async ({ request }) => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    const res = await axios.post("http://localhost:3000/posts", data);
+    const res = await axios.post(
+      "http://blog-api-backend-production.up.railway.app/posts",
+      data
+    );
     if (res.data.success) {
       return redirect("/");
     }

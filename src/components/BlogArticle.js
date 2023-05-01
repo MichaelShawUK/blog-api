@@ -11,9 +11,11 @@ const BlogArticle = () => {
   const [date, setDate] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/posts/${postId}`).then((res) => {
-      setPost(res.data.post);
-    });
+    axios
+      .get(`http://blog-api-backend-production.up.railway.app/posts/${postId}`)
+      .then((res) => {
+        setPost(res.data.post);
+      });
   }, [postId]);
 
   useEffect(() => {
